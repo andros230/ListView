@@ -64,7 +64,6 @@ public class MyAdapter extends BaseAdapter {
 
     }
 
-
     public class ViewHolder {
         public TextView text;
         public Button button;
