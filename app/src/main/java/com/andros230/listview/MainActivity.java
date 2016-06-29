@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import java.nio.charset.MalformedInputException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,16 +20,19 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         ListView list = (ListView) findViewById(R.id.listView);
-
-        ArrayList<HashMap<String, String>> mylist = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            HashMap<String, String> map = new HashMap<>();
-            map.put("title" + i, "this is title " + i);
-            map.put("text", "this is text" + i);
-            mylist.add(map);
-        }
-
-        SimpleAdapter msche = new SimpleAdapter(this, mylist, R.layout.my_listitem, new String[]{"title", "text"}, new int[]{R.id.title, R.id.text});
-        list.setAdapter(msche);
+        MyAdapter adapter = new MyAdapter(getData(),this);
+        list.setAdapter(adapter);
     }
+
+
+    public List<String> getData() {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            list.add("jack" + i);
+        }
+        return list;
+
+    }
+
+
 }
