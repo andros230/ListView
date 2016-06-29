@@ -1,6 +1,7 @@
 package com.andros230.listview;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -37,9 +38,10 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        TextView textView = new TextView(context);
+        View view2 = LayoutInflater.from(context).inflate(R.layout.adapter_custom_view, null);
+        TextView  textView = (TextView) view2.findViewById(R.id.textview33);
         textView.setText(list.get(i));
         System.out.println("--->" + i);
-        return textView;
+        return view2;
     }
 }

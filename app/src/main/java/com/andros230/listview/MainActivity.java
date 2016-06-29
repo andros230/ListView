@@ -2,9 +2,13 @@ package com.andros230.listview;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.nio.charset.MalformedInputException;
 import java.util.ArrayList;
@@ -22,7 +26,22 @@ public class MainActivity extends Activity {
         ListView list = (ListView) findViewById(R.id.listView);
         MyAdapter adapter = new MyAdapter(getData(),this);
         list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i("----",getData().get(i));
+            }
+        });
+
     }
+
+        
+
+
+
+
+
 
 
     public List<String> getData() {
@@ -33,6 +52,5 @@ public class MainActivity extends Activity {
         return list;
 
     }
-
 
 }
